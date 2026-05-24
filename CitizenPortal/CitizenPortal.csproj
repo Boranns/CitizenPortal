@@ -24,11 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include=".github\workflows\" />
     <Folder Include="Controllers\" />
     <Folder Include="DTOs\" />
     <Folder Include="Hubs\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\ci.yml" />
   </ItemGroup>
 
 </Project>
