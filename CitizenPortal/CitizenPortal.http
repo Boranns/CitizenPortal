@@ -1,0 +1,6 @@
+@CitizenPortal_HostAddress = http://localhost:5119
+
+GET {{CitizenPortal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
