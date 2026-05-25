@@ -2,7 +2,7 @@
 {
     public class Comment
     {
-        public int Commentid { get; set; }
+        public int CommentId { get; set; }
         public int UserId { get; set; }
         public int ApplicationId { get; set; }
         public string Text { get; set; } =string.Empty;
