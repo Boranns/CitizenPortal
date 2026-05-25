@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove=".github\**" />
+    <Content Remove=".github\**" />
+    <EmbeddedResource Remove=".github\**" />
+    <None Remove=".github\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.28.0" />
     <PackageReference Include="MailKit" Version="4.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
@@ -29,10 +36,6 @@
     <Folder Include="Hubs\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".github\workflows\ci.yml" />
   </ItemGroup>
 
 </Project>
