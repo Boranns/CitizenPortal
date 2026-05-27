@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="CitizenPortal.Tests/CitizenPortal.Tests.csproj" Id="23a93bcb-df8c-432f-9f80-df9611ef63ac" />
   <Project Path="CitizenPortal/CitizenPortal.csproj" />
 </Solution>
