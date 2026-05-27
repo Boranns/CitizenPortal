@@ -21,8 +21,9 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 // Services
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

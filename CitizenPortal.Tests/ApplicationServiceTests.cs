@@ -134,4 +134,32 @@ public class ApplicationServiceTests
 
         Assert.Single(result);
     }
+
+    [Fact]
+    public async Task GetAllAsync_ReturnsEmptyList_WhenNoApplications()
+    {
+        _applicationRepositoryMock.Setup(x => x.GetAllAsync())
+            .ReturnsAsync(new List<Application>());
+
+        var result = await _applicationService.GetAllAsync();
+
+        Assert.Empty(result);
+    }
+
+    [Fact]
+    public async Task CreateAsync_SetsStatusToAfventer()
+    {
+        var dto = new CreateApplicationDto
+        {
+            Title = "Test",
+            Description = "Test description"
+        };
+
+        _applicationRepositoryMock.Setup(x => x.CreateAsync(It.IsAny<Application>()))
+            .ReturnsAsync((Application a) => a);
+
+        var result = await _applicationService.CreateAsync(1, dto);
+
+        Assert.Equal("Afventer", result.Status);
+    }
 }
