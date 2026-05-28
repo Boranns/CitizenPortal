@@ -1,0 +1,41 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.page-header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.ansogning-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.ansogning-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.ansogning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ansogning-header h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.ansogning-card p {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.ansogning-card small {
+  color: #999;
+}

@@ -1,0 +1,53 @@
+.back-btn {
+  margin: 24px 0 16px 0;
+}
+
+.detaljer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.detaljer-header h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.detaljer-desc {
+  color: #555;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.kommentar {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.kommentar strong {
+  color: #c0392b;
+  font-size: 14px;
+}
+
+.kommentar p {
+  margin: 4px 0;
+  color: #333;
+}
+
+.kommentar small {
+  color: #999;
+}
+
+.kommentar-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.kommentar-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
