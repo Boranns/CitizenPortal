@@ -5,7 +5,7 @@ import api from '../services/api';
 import './NyAnsogning.css';
 
 const NyAnsogning = () => {
-  const [form, setForm] = useState({ title: '', description: '' });
+  const [form, setForm] = useState({ title: '', description: '', applicationType: '' });
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -39,6 +39,21 @@ const NyAnsogning = () => {
         <div className="card">
           {error && <p className="error">{error}</p>}
           <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Ansøgningstype</label>
+              <select
+                value={form.applicationType}
+                onChange={(e) => setForm({ ...form, applicationType: e.target.value })}
+              >
+                <option value="">Vælg type</option>
+                <option value="Pas">Pas</option>
+                <option value="Kørekort">Kørekort</option>
+                <option value="Adresseændring">Adresseændring</option>
+                <option value="Lægehenvisning">Lægehenvisning</option>
+                <option value="Socialhjælp">Socialhjælp</option>
+                <option value="Andet">Andet</option>
+              </select>
+            </div>
             <div className="form-group">
               <label>Titel</label>
               <input

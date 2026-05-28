@@ -38,6 +38,7 @@ public class ApplicationService : IApplicationService
             UserId = userId,
             Title = dto.Title,
             Description = dto.Description,
+            ApplicationType = dto.ApplicationType,
             Status = "Afventer",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
