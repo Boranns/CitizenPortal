@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citizenportal-backend
+  labels:
+    app: citizenportal-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: citizenportal-backend
+  template:
+    metadata:
+      labels:
+        app: citizenportal-backend
+    spec:
+      containers:
+        - name: backend
+          image: citizenportalacr.azurecr.io/citizenportal-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                secretKeyRef:
+                  name: citizenportal-secrets
+                  key: db-connection
+            - name: Jwt__Key
+              valueFrom:
+                secretKeyRef:
+                  name: citizenportal-secrets
+                  key: jwt-key
+            - name: Jwt__Issuer
+              value: CitizenPortal
+            - name: Jwt__Audience
+              value: CitizenPortalUsers
+            - name: Jwt__ExpireMinutes
+              value: "60"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citizenportal-frontend
+  labels:
+    app: citizenportal-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: citizenportal-frontend
+  template:
+    metadata:
+      labels:
+        app: citizenportal-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: citizenportalacr.azurecr.io/citizenportal-frontend:latest
+          ports:
+            - containerPort: 80

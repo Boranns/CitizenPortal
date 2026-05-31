@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: citizenportal-config
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+  Jwt__Issuer: "CitizenPortal"
+  Jwt__Audience: "CitizenPortalUsers"
+  Jwt__ExpireMinutes: "60"

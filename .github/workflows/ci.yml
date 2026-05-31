@@ -42,3 +42,39 @@ jobs:
 
       - name: Build frontend Docker image
         run: docker build -t citizenportal-frontend ./citizen-portal-frontend
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker-build
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login to ACR
+        run: az acr login --name citizenportalacr
+
+      - name: Build and push backend image
+        run: |
+          docker build -t citizenportalacr.azurecr.io/citizenportal-backend:${{ github.sha }} ./CitizenPortal
+          docker push citizenportalacr.azurecr.io/citizenportal-backend:${{ github.sha }}
+
+      - name: Build and push frontend image
+        run: |
+          docker build -t citizenportalacr.azurecr.io/citizenportal-frontend:${{ github.sha }} ./citizen-portal-frontend
+          docker push citizenportalacr.azurecr.io/citizenportal-frontend:${{ github.sha }}
+
+      - name: Set AKS context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: CitizenPortal-RG
+          cluster-name: citizenportal-aks
+
+      - name: Deploy to AKS
+        run: kubectl apply -f k8s/
